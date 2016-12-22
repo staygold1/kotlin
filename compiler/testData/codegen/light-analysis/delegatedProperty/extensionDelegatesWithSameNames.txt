@@ -16,6 +16,8 @@ public final class ExtensionDelegatesWithSameNamesKt {
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getProp(@org.jetbrains.annotations.NotNull p0: K): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getProp(@org.jetbrains.annotations.NotNull p0: O): java.lang.String
+    public synthetic static method prop$delegate$1(): D
+    public synthetic static method prop$delegate(): D
 }
 
 public final class K {

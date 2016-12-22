@@ -6,6 +6,7 @@ public final class A {
     public final method foo(): int
     public final method getI(): int
     public final method getProp(): int
+    public synthetic method prop$delegate(): Delegate
 }
 
 public final class Delegate {

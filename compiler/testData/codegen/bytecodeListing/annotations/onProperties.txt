@@ -13,6 +13,7 @@ public final class A {
     public final @AnnGetter method getY(): int
     private synthetic deprecated static @AnnProp @AnnProp2 method p$annotations(): void
     private synthetic deprecated static @AnnProp @AnnProp2 @AnnDelegate method s$annotations(): void
+    public synthetic method s$delegate(): CustomDelegate
     public final @AnnSetter method setP(@AnnParam p0: int): void
     public final @AnnSetter method setY(p0: int): void
     private synthetic deprecated static @AnnProp2 method x$annotations(): void

@@ -3,6 +3,7 @@ public final class ExtensionDelegatedKt {
     private final static @org.jetbrains.annotations.NotNull field calc$delegate: UserDataProperty
     private static @org.jetbrains.annotations.NotNull field log: java.lang.String
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
+    public synthetic static method calc$delegate(): UserDataProperty
     public final static @org.jetbrains.annotations.NotNull method getCalc(@org.jetbrains.annotations.NotNull p0: java.lang.String): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getLog(): java.lang.String
     public final static method setCalc(@org.jetbrains.annotations.NotNull p0: java.lang.String, @org.jetbrains.annotations.NotNull p1: java.lang.String): void

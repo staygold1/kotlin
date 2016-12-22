@@ -10,6 +10,7 @@ public final class A/B {
     inner class A/B
     public method <init>(p0: A): void
     public final method getProp(): int
+    public synthetic method prop$delegate(): Delegate
 }
 
 public final class Delegate {

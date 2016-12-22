@@ -16,6 +16,8 @@ public final class Test {
     private final @org.jetbrains.annotations.Nullable field delegateLazy$delegate: kotlin.Lazy
     private final @org.jetbrains.annotations.Nullable field delegateNotNull$delegate: kotlin.properties.ReadWriteProperty
     public method <init>(p0: java.lang.Object): void
+    public synthetic method delegateLazy$delegate(): kotlin.Lazy
+    public synthetic method delegateNotNull$delegate(): kotlin.properties.ReadWriteProperty
     public final @org.jetbrains.annotations.Nullable method getClassField1(): Z
     public final @org.jetbrains.annotations.Nullable method getClassField2(): Z
     public final @org.jetbrains.annotations.Nullable method getClassField3(): Zout

@@ -58,7 +58,8 @@ import java.util.List;
 
 import static org.jetbrains.kotlin.codegen.AsmUtil.getDeprecatedAccessFlag;
 import static org.jetbrains.kotlin.codegen.AsmUtil.getVisibilityForBackingField;
-import static org.jetbrains.kotlin.codegen.JvmCodegenUtil.*;
+import static org.jetbrains.kotlin.codegen.JvmCodegenUtil.isConstOrHasJvmFieldAnnotation;
+import static org.jetbrains.kotlin.codegen.JvmCodegenUtil.isJvmInterface;
 import static org.jetbrains.kotlin.codegen.serialization.JvmSerializationBindings.FIELD_FOR_PROPERTY;
 import static org.jetbrains.kotlin.codegen.serialization.JvmSerializationBindings.SYNTHETIC_METHOD_FOR_PROPERTY;
 import static org.jetbrains.kotlin.resolve.DescriptorUtils.isCompanionObject;
@@ -158,6 +159,42 @@ public class PropertyCodegen {
         if (!propertyAnnotations.getAllAnnotations().isEmpty() && kind != OwnerKind.DEFAULT_IMPLS &&
             CodegenContextUtil.isImplClassOwner(context)) {
             v.getSerializationBindings().put(SYNTHETIC_METHOD_FOR_PROPERTY, descriptor, getSyntheticMethodSignature(descriptor));
+        }
+    }
+
+    private void generateGetDelegate(
+            @NotNull ClassBuilder builder,
+            @NotNull PropertyDescriptor descriptor,
+            @NotNull String fieldName,
+            @NotNull Type fieldType,
+            int flags
+    ) {
+        assert CodegenContextUtil.isImplClassOwner(context) : "getDelegate should not be generated in multi-file facade: " + descriptor;
+
+        int access = (flags | ACC_PUBLIC | ACC_SYNTHETIC) & ~ACC_FINAL;
+
+        MethodVisitor mv = builder.newMethod(
+                JvmDeclarationOriginKt.OtherOrigin(descriptor), access, fieldName,
+                Type.getMethodDescriptor(fieldType), null, null
+        );
+
+        if (state.getClassBuilderMode().generateBodies) {
+            mv.visitCode();
+            InstructionAdapter iv = new InstructionAdapter(mv);
+
+            String ownerName = builder.getThisName();
+
+            if ((flags & ACC_STATIC) == 0) {
+                iv.load(0, Type.getObjectType(ownerName));
+                iv.getfield(ownerName, fieldName, fieldType.getDescriptor());
+            }
+            else {
+                iv.getstatic(ownerName, fieldName, fieldType.getDescriptor());
+            }
+
+            iv.areturn(fieldType);
+
+            FunctionCodegen.endVisit(iv, "$delegate method for property", DescriptorToSourceUtils.descriptorToDeclaration(descriptor));
         }
     }
 
@@ -340,7 +377,6 @@ public class PropertyCodegen {
                 backingFieldContext = codegen.context;
             }
         }
-        modifiers |= getVisibilityForBackingField(propertyDescriptor, isDelegate);
 
         if (AsmUtil.isPropertyWithBackingFieldCopyInOuterClass(propertyDescriptor)) {
             ImplementationBodyCodegen parentBodyCodegen = (ImplementationBodyCodegen) memberCodegen.getParentCodegen();
@@ -352,9 +388,15 @@ public class PropertyCodegen {
         v.getSerializationBindings().put(FIELD_FOR_PROPERTY, propertyDescriptor, Pair.create(type, name));
 
         FieldVisitor fv = builder.newField(
-                JvmDeclarationOriginKt.OtherOrigin(element, propertyDescriptor), modifiers, name, type.getDescriptor(),
+                JvmDeclarationOriginKt.OtherOrigin(element, propertyDescriptor),
+                modifiers | getVisibilityForBackingField(propertyDescriptor, isDelegate), name, type.getDescriptor(),
                 isDelegate ? null : typeMapper.mapFieldSignature(kotlinType, propertyDescriptor), defaultValue
         );
+
+        // TODO: this will not work for deserialized property (the case of incremental compilation of multi-file facade)
+        if (isDelegate) {
+            generateGetDelegate(builder, propertyDescriptor, name, type, modifiers);
+        }
 
         Annotated fieldAnnotated = new AnnotatedWithFakeAnnotations(propertyDescriptor, annotations);
         AnnotationCodegen.forField(fv, memberCodegen, typeMapper).genAnnotations(

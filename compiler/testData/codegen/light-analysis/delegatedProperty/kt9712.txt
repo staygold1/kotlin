@@ -2,6 +2,7 @@ public class A {
     private synthetic final static field $$delegatedProperties: kotlin.reflect.KProperty[]
     private final @org.jetbrains.annotations.NotNull field K$delegate: kotlin.properties.ReadWriteProperty
     public method <init>(): void
+    public synthetic method K$delegate(): kotlin.properties.ReadWriteProperty
     public final @org.jetbrains.annotations.NotNull method getK(): java.lang.String
     protected final method setK(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
 }
@@ -19,6 +20,7 @@ public final class X {
     public final static field INSTANCE: X
     private final static @org.jetbrains.annotations.NotNull field O$delegate: kotlin.properties.ReadWriteProperty
     private method <init>(): void
+    public synthetic static method O$delegate(): kotlin.properties.ReadWriteProperty
     public final @org.jetbrains.annotations.NotNull method getO(): java.lang.String
     private final method setO(p0: java.lang.String): void
 }

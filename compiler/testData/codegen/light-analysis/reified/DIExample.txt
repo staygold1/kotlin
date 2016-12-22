@@ -8,6 +8,8 @@ public final class DIExampleKt {
     private final static method getValue(@org.jetbrains.annotations.NotNull p0: Project, p1: java.lang.Object, p2: kotlin.reflect.KProperty): java.lang.Object
     public final static method getX1(): int
     public final static @org.jetbrains.annotations.NotNull method getX2(): java.lang.String
+    public synthetic static method x1$delegate(): Project
+    public synthetic static method x2$delegate(): Project
 }
 
 public final class Project {

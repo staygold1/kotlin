@@ -5,6 +5,7 @@ public final class AccessTopLevelDelegatedPropertyInClinitKt {
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getA(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getProp(): java.lang.String
+    public synthetic static method prop$delegate(): Delegate
 }
 
 public final class Delegate {

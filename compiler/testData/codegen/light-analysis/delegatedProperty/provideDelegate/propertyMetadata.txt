@@ -4,6 +4,8 @@ public final class PropertyMetadataKt {
     private final static @org.jetbrains.annotations.NotNull field O$delegate: java.lang.String
     private final static @org.jetbrains.annotations.NotNull field OK: java.lang.String
     private static @org.jetbrains.annotations.NotNull field log: java.lang.String
+    public synthetic static method K$delegate(): java.lang.String
+    public synthetic static method O$delegate(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getK(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getLog(): java.lang.String

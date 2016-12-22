@@ -5,6 +5,8 @@ public final class A {
     private final @org.jetbrains.annotations.NotNull field foo$delegate: IntHandler
     inner class A/Companion
     public method <init>(): void
+    public synthetic static method bar$delegate(): AnyHandler
+    public synthetic method foo$delegate(): IntHandler
     public final method getFoo(): int
     public final method setFoo(p0: int): void
 }
@@ -35,6 +37,7 @@ public final class PropertyMetadataShouldBeCachedKt {
     private synthetic final static field $$delegatedProperties: kotlin.reflect.KProperty[]
     private final static @org.jetbrains.annotations.NotNull field baz$delegate: StringHandler
     private final static @org.jetbrains.annotations.NotNull field metadatas: java.util.IdentityHashMap
+    public synthetic static method baz$delegate(): StringHandler
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getBaz(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getMetadatas(): java.util.IdentityHashMap

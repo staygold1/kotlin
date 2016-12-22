@@ -5,6 +5,7 @@ public final class A {
     public method <init>(): void
     public final @org.jetbrains.annotations.NotNull method getP(): Delegate
     public final method getProp(): int
+    public synthetic method prop$delegate(): Delegate
     public final method setProp(p0: int): void
 }
 

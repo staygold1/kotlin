@@ -4,6 +4,7 @@ public class A {
     public method <init>(): void
     protected final @org.jetbrains.annotations.NotNull method getValue(): java.lang.Object
     private final method setValue(p0: java.lang.Object): void
+    public synthetic method value$delegate(): kotlin.properties.ReadWriteProperty
 }
 
 public final class B {

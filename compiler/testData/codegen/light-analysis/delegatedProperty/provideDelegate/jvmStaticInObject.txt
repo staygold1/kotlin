@@ -20,6 +20,8 @@ public final class Test {
     public final static @org.jetbrains.annotations.NotNull method getTestO(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getTestOK(): java.lang.String
     private synthetic deprecated static @kotlin.jvm.JvmStatic method testK$annotations(): void
+    public synthetic static method testK$delegate(): java.lang.String
     private synthetic deprecated static @kotlin.jvm.JvmStatic method testO$annotations(): void
+    public synthetic static method testO$delegate(): java.lang.String
     private synthetic deprecated static @kotlin.jvm.JvmStatic method testOK$annotations(): void
 }

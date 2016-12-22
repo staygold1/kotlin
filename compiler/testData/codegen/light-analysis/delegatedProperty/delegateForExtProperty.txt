@@ -12,4 +12,5 @@ public final class DelegateForExtPropertyKt {
     private final static @org.jetbrains.annotations.NotNull field prop$delegate: Delegate
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
     public final static method getProp(@org.jetbrains.annotations.NotNull p0: A): int
+    public synthetic static method prop$delegate(): Delegate
 }

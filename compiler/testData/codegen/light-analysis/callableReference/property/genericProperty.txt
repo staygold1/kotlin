@@ -9,6 +9,8 @@ public final class GenericPropertyKt {
     private synthetic final static field $$delegatedProperties: kotlin.reflect.KProperty[]
     private final static @org.jetbrains.annotations.Nullable field additionalText$delegate: DVal
     private final static field additionalValue$delegate: DVal
+    public synthetic static method additionalText$delegate(): DVal
+    public synthetic static method additionalValue$delegate(): DVal
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
     public final static @org.jetbrains.annotations.Nullable method getAdditionalText(@org.jetbrains.annotations.NotNull p0: Value): java.lang.String
     public final static method getAdditionalValue(@org.jetbrains.annotations.NotNull p0: Value): java.lang.Object

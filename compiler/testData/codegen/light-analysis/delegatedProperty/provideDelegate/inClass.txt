@@ -17,4 +17,6 @@ public final class Test {
     public final @org.jetbrains.annotations.NotNull method getTestK(): java.lang.String
     public final @org.jetbrains.annotations.NotNull method getTestO(): java.lang.String
     public final @org.jetbrains.annotations.NotNull method getTestOK(): java.lang.String
+    public synthetic method testK$delegate(): java.lang.String
+    public synthetic method testO$delegate(): java.lang.String
 }

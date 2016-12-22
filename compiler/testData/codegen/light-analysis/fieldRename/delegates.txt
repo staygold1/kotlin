@@ -13,6 +13,8 @@ public final class DelegatesKt {
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getS(@org.jetbrains.annotations.NotNull p0: A): java.lang.String
     public final static @org.jetbrains.annotations.NotNull method getS(@org.jetbrains.annotations.NotNull p0: B): java.lang.String
+    public synthetic static method s$delegate$1(): TestDelegate
+    public synthetic static method s$delegate(): TestDelegate
 }
 
 public class TestDelegate {

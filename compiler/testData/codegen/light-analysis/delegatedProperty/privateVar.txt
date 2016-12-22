@@ -3,6 +3,7 @@ public final class A {
     private final field prop$delegate: Delegate
     public method <init>(): void
     private final method getProp(): int
+    public synthetic method prop$delegate(): Delegate
     private final method setProp(p0: int): void
     public final @org.jetbrains.annotations.NotNull method test(): java.lang.String
 }

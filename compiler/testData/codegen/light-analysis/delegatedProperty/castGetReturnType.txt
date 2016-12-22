@@ -3,6 +3,7 @@ public final class AImpl {
     private final @org.jetbrains.annotations.NotNull field prop$delegate: Delegate
     public method <init>(): void
     public final @org.jetbrains.annotations.NotNull method getProp(): java.lang.Number
+    public synthetic method prop$delegate(): Delegate
 }
 
 public final class CastGetReturnTypeKt {

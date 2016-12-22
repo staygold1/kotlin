@@ -9,6 +9,7 @@ public final class My {
     private synthetic final static field $$delegatedProperties: kotlin.reflect.KProperty[]
     private final @org.jetbrains.annotations.NotNull field delegate$delegate: Delegate
     public method <init>(): void
+    public synthetic method delegate$delegate(): Delegate
     public final @org.jetbrains.annotations.NotNull method getDelegate(): java.lang.String
     private final method setDelegate(p0: java.lang.String): void
 }

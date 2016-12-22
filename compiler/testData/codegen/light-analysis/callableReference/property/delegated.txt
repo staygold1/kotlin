@@ -3,12 +3,14 @@ public final class A {
     private final @org.jetbrains.annotations.NotNull field two$delegate: NumberDecrypter
     public method <init>(): void
     public final method getTwo(): int
+    public synthetic method two$delegate(): NumberDecrypter
 }
 
 public final class DelegatedKt {
     private synthetic final static field $$delegatedProperties: kotlin.reflect.KProperty[]
     private final static @org.jetbrains.annotations.NotNull field four$delegate: NumberDecrypter
     public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
+    public synthetic static method four$delegate(): NumberDecrypter
     public final static method getFour(): int
 }
 

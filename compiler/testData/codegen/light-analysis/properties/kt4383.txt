@@ -18,4 +18,5 @@ public final class P {
     public final @org.jetbrains.annotations.NotNull method getV(): kotlin.Unit
     public final @org.jetbrains.annotations.NotNull method getW(): kotlin.Unit
     public final method setW(@org.jetbrains.annotations.NotNull p0: kotlin.Unit): void
+    public synthetic static method v$delegate(): D
 }

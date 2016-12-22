@@ -4,6 +4,7 @@ public final class A {
     public method <init>(): void
     public final method getProp(): int
     public final method getValue(@org.jetbrains.annotations.NotNull p0: Delegate, @org.jetbrains.annotations.Nullable p1: java.lang.Object, @org.jetbrains.annotations.NotNull p2: kotlin.reflect.KProperty): int
+    public synthetic method prop$delegate(): Delegate
 }
 
 public final class Delegate {

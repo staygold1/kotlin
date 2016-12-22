@@ -16,6 +16,7 @@ public final class TestIt {
     public method <init>(): void
     public final @kotlin.jvm.JvmName method getIsFries(): boolean
     public final @kotlin.jvm.JvmName method getIsUpdateable(): boolean
+    public synthetic method isUpdateable$delegate(): Delegate
     public final @kotlin.jvm.JvmName method setIsFries(p0: boolean): void
     public final @kotlin.jvm.JvmName method setIsUpdateable(p0: boolean): void
 }

@@ -18,4 +18,5 @@ public final class MyClass {
     public method <init>(): void
     public final @org.jetbrains.annotations.NotNull method getX(): java.lang.String
     public final @First method setX(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    public synthetic method x$delegate(): Delegate
 }

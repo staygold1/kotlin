@@ -14,4 +14,5 @@ public final class Test {
     private final @org.jetbrains.annotations.NotNull field x$delegate: NotImplemented
     public method <init>(): void
     public final method getX(): int
+    public synthetic method x$delegate(): NotImplemented
 }

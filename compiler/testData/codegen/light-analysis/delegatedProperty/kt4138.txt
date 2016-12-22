@@ -14,6 +14,8 @@ public final class Foo {
     private final field f: int
     inner class Foo/Companion
     public method <init>(p0: int): void
+    public synthetic static method A$delegate(): Delegate
+    public synthetic static method B$delegate(): Delegate
     public final method getF(): int
 }
 
@@ -37,6 +39,8 @@ public final static class FooTrait/Companion {
     private final static @org.jetbrains.annotations.NotNull field B$delegate: Delegate
     inner class FooTrait/Companion
     private method <init>(): void
+    public synthetic static method A$delegate(): Delegate
+    public synthetic static method B$delegate(): Delegate
     public final @org.jetbrains.annotations.NotNull method getA(): Foo
     public final @org.jetbrains.annotations.NotNull method getB(): Foo
     public final method setB(@org.jetbrains.annotations.NotNull p0: Foo): void

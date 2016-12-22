@@ -7,6 +7,7 @@ public final class Host {
     private method <init>(): void
     public final @org.jetbrains.annotations.NotNull method getOk(): java.lang.String
     public final @org.jetbrains.annotations.NotNull method getPlusK(@org.jetbrains.annotations.NotNull p0: java.lang.String): java.lang.String
+    public synthetic static method plusK$delegate(): Host.StringDelegate
     public final @org.jetbrains.annotations.NotNull method provideDelegate(@org.jetbrains.annotations.NotNull p0: java.lang.String, @org.jetbrains.annotations.Nullable p1: java.lang.Object, @org.jetbrains.annotations.NotNull p2: java.lang.Object): Host.StringDelegate
 }
 
