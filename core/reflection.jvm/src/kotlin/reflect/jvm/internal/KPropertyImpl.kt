@@ -24,6 +24,7 @@ import org.jetbrains.kotlin.resolve.DescriptorUtils
 import org.jetbrains.kotlin.serialization.jvm.JvmProtoBufUtil
 import org.jetbrains.kotlin.types.TypeUtils
 import java.lang.reflect.Field
+import java.lang.reflect.Method
 import java.lang.reflect.Modifier
 import kotlin.jvm.internal.CallableReference
 import kotlin.reflect.KFunction
@@ -50,34 +51,37 @@ internal abstract class KPropertyImpl<out R> private constructor(
             CallableReference.NO_RECEIVER
     )
 
-    override val isBound: Boolean get() = boundReceiver != CallableReference.NO_RECEIVER
+    override val isBound: Boolean get() = boundReceiver !== CallableReference.NO_RECEIVER
 
     private val javaField_ = ReflectProperties.lazySoft {
         val jvmSignature = RuntimeTypeMapper.mapPropertySignature(descriptor)
         when (jvmSignature) {
-            is KotlinProperty -> {
-                val descriptor = jvmSignature.descriptor
-                JvmProtoBufUtil.getJvmFieldSignature(jvmSignature.proto, jvmSignature.nameResolver, jvmSignature.typeTable)?.let {
-                    val owner = if (JvmAbi.isCompanionObjectWithBackingFieldsInOuter(descriptor.containingDeclaration)) {
-                        container.jClass.enclosingClass
-                    }
-                    else descriptor.containingDeclaration.let { containingDeclaration ->
-                        if (containingDeclaration is ClassDescriptor) containingDeclaration.toJavaClass()
-                        else container.jClass
-                    }
+            is KotlinProperty -> getFieldName(jvmSignature)?.let { fieldName ->
+                val owner = computePropertyOwnerClass(jvmSignature.descriptor)
 
-                    try {
-                        owner?.getDeclaredField(it.name)
-                    }
-                    catch (e: NoSuchFieldException) {
-                        null
-                    }
+                try {
+                    owner?.getDeclaredField(fieldName)
+                }
+                catch (e: NoSuchFieldException) {
+                    null
                 }
             }
             is JavaField -> jvmSignature.field
             is JavaMethodProperty -> null
         }
     }
+
+    internal fun computePropertyOwnerClass(descriptor: PropertyDescriptor): Class<*>? =
+            if (JvmAbi.isCompanionObjectWithBackingFieldsInOuter(descriptor.containingDeclaration)) {
+                container.jClass.enclosingClass
+            }
+            else descriptor.containingDeclaration.let { containingDeclaration ->
+                if (containingDeclaration is ClassDescriptor) containingDeclaration.toJavaClass()
+                else container.jClass
+            }
+
+    internal fun getFieldName(signature: KotlinProperty): String? =
+            JvmProtoBufUtil.getJvmFieldSignature(signature.proto, signature.nameResolver, signature.typeTable)?.name
 
     val javaField: Field? get() = javaField_()
 
@@ -242,5 +246,22 @@ private fun KPropertyImpl.Accessor<*, *>.computeCallerForAccessor(isGetter: Bool
             if (isBound) FunctionCaller.BoundInstanceMethod(method, property.boundReceiver)
             else FunctionCaller.InstanceMethod(method)
         }
+    }
+}
+
+internal fun KPropertyImpl<*>.computeDelegateMethod(): Method? {
+    val jvmSignature = RuntimeTypeMapper.mapPropertySignature(descriptor) as? KotlinProperty ?: return null
+
+    // Name of the delegate field for property "foo" is "foo$delegate" in 99% of cases, but can be e.g. "foo$delegate$1"
+    // in cases like when several delegated extension properties with the same name are defined in the same container
+    val fieldName = getFieldName(jvmSignature) ?: return null
+
+    val owner = computePropertyOwnerClass(jvmSignature.descriptor)
+
+    return try {
+        owner?.getDeclaredMethod(JvmAbi.getterName(fieldName))
+    }
+    catch (e: NoSuchMethodException) {
+        null
     }
 }

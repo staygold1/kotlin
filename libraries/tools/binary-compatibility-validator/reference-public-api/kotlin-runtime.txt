@@ -647,6 +647,7 @@ public abstract class kotlin/jvm/internal/MutablePropertyReference0 : kotlin/jvm
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/Object;)V
 	protected fun computeReflected ()Lkotlin/reflect/KCallable;
+	public fun getDelegate ()Ljava/lang/Object;
 	public synthetic fun getGetter ()Lkotlin/reflect/KProperty$Getter;
 	public fun getGetter ()Lkotlin/reflect/KProperty0$Getter;
 	public synthetic fun getSetter ()Lkotlin/reflect/KMutableProperty$Setter;
@@ -667,6 +668,7 @@ public abstract class kotlin/jvm/internal/MutablePropertyReference1 : kotlin/jvm
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/Object;)V
 	protected fun computeReflected ()Lkotlin/reflect/KCallable;
+	public fun getDelegate (Ljava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun getGetter ()Lkotlin/reflect/KProperty$Getter;
 	public fun getGetter ()Lkotlin/reflect/KProperty1$Getter;
 	public synthetic fun getSetter ()Lkotlin/reflect/KMutableProperty$Setter;
@@ -686,6 +688,7 @@ public class kotlin/jvm/internal/MutablePropertyReference1Impl : kotlin/jvm/inte
 public abstract class kotlin/jvm/internal/MutablePropertyReference2 : kotlin/jvm/internal/MutablePropertyReference, kotlin/reflect/KMutableProperty2 {
 	public fun <init> ()V
 	protected fun computeReflected ()Lkotlin/reflect/KCallable;
+	public fun getDelegate (Ljava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun getGetter ()Lkotlin/reflect/KProperty$Getter;
 	public fun getGetter ()Lkotlin/reflect/KProperty2$Getter;
 	public synthetic fun getSetter ()Lkotlin/reflect/KMutableProperty$Setter;
@@ -728,6 +731,7 @@ public abstract class kotlin/jvm/internal/PropertyReference0 : kotlin/jvm/intern
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/Object;)V
 	protected fun computeReflected ()Lkotlin/reflect/KCallable;
+	public fun getDelegate ()Ljava/lang/Object;
 	public synthetic fun getGetter ()Lkotlin/reflect/KProperty$Getter;
 	public fun getGetter ()Lkotlin/reflect/KProperty0$Getter;
 	public fun invoke ()Ljava/lang/Object;
@@ -745,6 +749,7 @@ public abstract class kotlin/jvm/internal/PropertyReference1 : kotlin/jvm/intern
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/Object;)V
 	protected fun computeReflected ()Lkotlin/reflect/KCallable;
+	public fun getDelegate (Ljava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun getGetter ()Lkotlin/reflect/KProperty$Getter;
 	public fun getGetter ()Lkotlin/reflect/KProperty1$Getter;
 	public fun invoke (Ljava/lang/Object;)Ljava/lang/Object;
@@ -761,6 +766,7 @@ public class kotlin/jvm/internal/PropertyReference1Impl : kotlin/jvm/internal/Pr
 public abstract class kotlin/jvm/internal/PropertyReference2 : kotlin/jvm/internal/PropertyReference, kotlin/reflect/KProperty2 {
 	public fun <init> ()V
 	protected fun computeReflected ()Lkotlin/reflect/KCallable;
+	public fun getDelegate (Ljava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun getGetter ()Lkotlin/reflect/KProperty$Getter;
 	public fun getGetter ()Lkotlin/reflect/KProperty2$Getter;
 	public fun invoke (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -1215,6 +1221,7 @@ public abstract interface class kotlin/reflect/KProperty$Getter : kotlin/reflect
 
 public abstract interface class kotlin/reflect/KProperty0 : kotlin/jvm/functions/Function0, kotlin/reflect/KProperty {
 	public abstract fun get ()Ljava/lang/Object;
+	public abstract fun getDelegate ()Ljava/lang/Object;
 	public abstract fun getGetter ()Lkotlin/reflect/KProperty0$Getter;
 }
 
@@ -1223,6 +1230,7 @@ public abstract interface class kotlin/reflect/KProperty0$Getter : kotlin/jvm/fu
 
 public abstract interface class kotlin/reflect/KProperty1 : kotlin/jvm/functions/Function1, kotlin/reflect/KProperty {
 	public abstract fun get (Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getDelegate (Ljava/lang/Object;)Ljava/lang/Object;
 	public abstract fun getGetter ()Lkotlin/reflect/KProperty1$Getter;
 }
 
@@ -1231,6 +1239,7 @@ public abstract interface class kotlin/reflect/KProperty1$Getter : kotlin/jvm/fu
 
 public abstract interface class kotlin/reflect/KProperty2 : kotlin/jvm/functions/Function2, kotlin/reflect/KProperty {
 	public abstract fun get (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getDelegate (Ljava/lang/Object;)Ljava/lang/Object;
 	public abstract fun getGetter ()Lkotlin/reflect/KProperty2$Getter;
 }
 
