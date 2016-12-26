@@ -14451,6 +14451,39 @@ public class IrBlackBoxCodegenTestGenerated extends AbstractIrBlackBoxCodegenTes
                     doTest(fileName);
                 }
             }
+
+            @TestMetadata("compiler/testData/codegen/box/reflection/properties/getLateInit")
+            @TestDataPath("$PROJECT_ROOT")
+            @RunWith(JUnit3RunnerWithInners.class)
+            public static class GetLateInit extends AbstractIrBlackBoxCodegenTest {
+                public void testAllFilesPresentInGetLateInit() throws Exception {
+                    KotlinTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/codegen/box/reflection/properties/getLateInit"), Pattern.compile("^(.+)\\.kt$"), TargetBackend.JVM, true);
+                }
+
+                @TestMetadata("boundMemberProperty.kt")
+                public void testBoundMemberProperty() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/reflection/properties/getLateInit/boundMemberProperty.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("fakeOverride.kt")
+                public void testFakeOverride() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/reflection/properties/getLateInit/fakeOverride.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("jvmStatic.kt")
+                public void testJvmStatic() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/reflection/properties/getLateInit/jvmStatic.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("memberProperty.kt")
+                public void testMemberProperty() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/reflection/properties/getLateInit/memberProperty.kt");
+                    doTest(fileName);
+                }
+            }
         }
 
         @TestMetadata("compiler/testData/codegen/box/reflection/specialBuiltIns")

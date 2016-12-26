@@ -95,6 +95,13 @@ public interface KProperty0<out R> : KProperty<R>, () -> R {
     @SinceKotlin("1.1")
     public fun getDelegate(): Any?
 
+    /**
+     * For a `lateinit` property, returns a [LateInit] instance that may be used to control the value of the property.
+     * Returns `null` if this is not a `lateinit` property.
+     */
+    @SinceKotlin("1.1")
+    public fun getLateInit(): LateInit?
+
     override val getter: Getter<R>
 
     public interface Getter<out R> : KProperty.Getter<R>, () -> R
@@ -147,6 +154,15 @@ public interface KProperty1<T, out R> : KProperty<R>, (T) -> R {
      */
     @SinceKotlin("1.1")
     public fun getDelegate(receiver: T): Any?
+
+    /**
+     * For a `lateinit` property, returns a [LateInit] instance that may be used to control the value of the property.
+     * Returns `null` if this is not a `lateinit` property.
+     *
+     * @param receiver the receiver which is going to be used by the [LateInit] instance to obtain the value of the property.
+     */
+    @SinceKotlin("1.1")
+    public fun getLateInit(receiver: T): LateInit?
 
     override val getter: Getter<T, R>
 

@@ -19,6 +19,7 @@ package kotlin.jvm.internal;
 import kotlin.reflect.KCallable;
 import kotlin.reflect.KMutableProperty1;
 import kotlin.reflect.KProperty1;
+import kotlin.reflect.LateInit;
 
 public abstract class MutablePropertyReference1 extends MutablePropertyReference implements KMutableProperty1 {
     public MutablePropertyReference1() {
@@ -51,5 +52,10 @@ public abstract class MutablePropertyReference1 extends MutablePropertyReference
     @Override
     public Object getDelegate(Object receiver) {
         return ((KMutableProperty1) getReflected()).getDelegate(receiver);
+    }
+
+    @Override
+    public LateInit getLateInit(Object receiver) {
+        return ((KMutableProperty1) getReflected()).getLateInit(receiver);
     }
 }

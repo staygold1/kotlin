@@ -1,0 +1,33 @@
+public final class Bar {
+    public final static field INSTANCE: Bar
+    public static @org.jetbrains.annotations.NotNull field x: java.lang.String
+    private method <init>(): void
+    public final static @org.jetbrains.annotations.NotNull method getX(): java.lang.String
+    public final static method setX(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    private synthetic deprecated static @kotlin.jvm.JvmStatic method x$annotations(): void
+    public synthetic static method x$get(): java.lang.String
+    public synthetic static method x$reset(): void
+}
+
+public final class Foo {
+    public final static field Companion: Foo.Companion
+    public static @org.jetbrains.annotations.NotNull field x: java.lang.String
+    inner class Foo/Companion
+    public method <init>(): void
+    public final static @org.jetbrains.annotations.NotNull method getX(): java.lang.String
+    public final static method setX(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+}
+
+public final static class Foo/Companion {
+    inner class Foo/Companion
+    private method <init>(): void
+    public final @org.jetbrains.annotations.NotNull method getX(): java.lang.String
+    public final method setX(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    private synthetic deprecated static @kotlin.jvm.JvmStatic method x$annotations(): void
+    public synthetic method x$get(): java.lang.String
+    public synthetic method x$reset(): void
+}
+
+public final class JvmStaticKt {
+    public final static @org.jetbrains.annotations.NotNull method box(): java.lang.String
+}

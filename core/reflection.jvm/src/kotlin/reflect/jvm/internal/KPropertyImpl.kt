@@ -265,3 +265,18 @@ internal fun KPropertyImpl<*>.computeDelegateMethod(): Method? {
         null
     }
 }
+
+internal fun KPropertyImpl<*>.computeLateInitAccessors(): LateInitAccessors? {
+    if (!isLateinit) return null
+
+    val jvmSignature = RuntimeTypeMapper.mapPropertySignature(descriptor) as? KotlinProperty ?: return null
+    val owner = computePropertyOwnerClass(jvmSignature.descriptor) ?: return null
+
+    // For lateinit properties without "$get" and "$reset" methods (Kotlin <1.1), KProperty.getLateInit() returns null
+    val get = try { owner.getDeclaredMethod(name + JvmAbi.GET_LATEINIT_NAME_SUFFIX) }
+              catch (e: NoSuchMethodException) { return null }
+    val reset = try { owner.getDeclaredMethod(name + JvmAbi.RESET_LATEINIT_NAME_SUFFIX) }
+                catch (e: NoSuchMethodException) { return null }
+
+    return LateInitAccessors(get, reset)
+}

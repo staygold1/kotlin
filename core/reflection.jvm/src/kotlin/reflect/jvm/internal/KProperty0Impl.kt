@@ -20,6 +20,7 @@ import org.jetbrains.kotlin.descriptors.PropertyDescriptor
 import kotlin.LazyThreadSafetyMode.PUBLICATION
 import kotlin.reflect.KMutableProperty0
 import kotlin.reflect.KProperty0
+import kotlin.reflect.LateInit
 
 internal open class KProperty0Impl<out R> : KProperty0<R>, KPropertyImpl<R> {
     constructor(container: KDeclarationContainerImpl, descriptor: PropertyDescriptor) : super(container, descriptor)
@@ -35,6 +36,10 @@ internal open class KProperty0Impl<out R> : KProperty0<R>, KPropertyImpl<R> {
     private val delegate_ = lazy(PUBLICATION) { computeDelegateMethod()?.invoke(boundReceiver) }
 
     override fun getDelegate(): Any? = delegate_.value
+
+    private val lateinit_ = ReflectProperties.lazy { computeLateInitAccessors()?.let { accessors -> LateInitImpl(boundReceiver, accessors) } }
+
+    override fun getLateInit(): LateInit? = lateinit_()
 
     override fun invoke(): R = get()
 

@@ -18,6 +18,7 @@ package kotlin.jvm.internal;
 
 import kotlin.reflect.KCallable;
 import kotlin.reflect.KProperty0;
+import kotlin.reflect.LateInit;
 
 public abstract class PropertyReference0 extends PropertyReference implements KProperty0 {
     public PropertyReference0() {
@@ -46,5 +47,10 @@ public abstract class PropertyReference0 extends PropertyReference implements KP
     @Override
     public Object getDelegate() {
         return ((KProperty0) getReflected()).getDelegate();
+    }
+
+    @Override
+    public LateInit getLateInit() {
+        return ((KProperty0) getReflected()).getLateInit();
     }
 }
