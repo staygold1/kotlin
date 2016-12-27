@@ -1,0 +1,55 @@
+@kotlin.Metadata
+public final class MyClass$Companion {
+    inner class MyClass$Companion
+    private method <init>(): void
+    public synthetic method <init>(p0: kotlin.jvm.internal.DefaultConstructorMarker): void
+    public final @org.jetbrains.annotations.NotNull method getCompanion(): java.lang.String
+    public final @org.jetbrains.annotations.NotNull method getJvmStatic(): java.lang.String
+    private synthetic deprecated static @kotlin.jvm.JvmStatic method jvmStatic$annotations(): void
+    public final method setCompanion(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    public final method setJvmStatic(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+}
+
+@kotlin.Metadata
+public final class MyClass {
+    public final static field Companion: MyClass$Companion
+    public static @org.jetbrains.annotations.NotNull field companion: java.lang.String
+    public @org.jetbrains.annotations.NotNull field foo: java.lang.String
+    public static @org.jetbrains.annotations.NotNull field jvmStatic: java.lang.String
+    public @org.jetbrains.annotations.NotNull field x: java.lang.String
+    inner class MyClass$Companion
+    static method <clinit>(): void
+    public method <init>(): void
+    public final @kotlin.jvm.JvmName @org.jetbrains.annotations.NotNull method bar(): java.lang.String
+    public synthetic static method companion$get(): java.lang.String
+    public synthetic static method companion$reset(): void
+    public synthetic method foo$get(): java.lang.String
+    public synthetic method foo$reset(): void
+    public final static @org.jetbrains.annotations.NotNull method getJvmStatic(): java.lang.String
+    public final @org.jetbrains.annotations.NotNull method getX(): java.lang.String
+    public synthetic static method jvmStatic$get(): java.lang.String
+    public synthetic static method jvmStatic$reset(): void
+    public final method setFoo(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    public final static method setJvmStatic(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    public final method setX(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    public synthetic method x$get(): java.lang.String
+    public synthetic method x$reset(): void
+}
+
+@kotlin.Metadata
+public final class MyObject {
+    public final static field INSTANCE: MyObject
+    public static @org.jetbrains.annotations.NotNull field jvmStatic: java.lang.String
+    public static @org.jetbrains.annotations.NotNull field x: java.lang.String
+    static method <clinit>(): void
+    private method <init>(): void
+    public final static @org.jetbrains.annotations.NotNull method getJvmStatic(): java.lang.String
+    public final @org.jetbrains.annotations.NotNull method getX(): java.lang.String
+    private synthetic deprecated static @kotlin.jvm.JvmStatic method jvmStatic$annotations(): void
+    public synthetic static method jvmStatic$get(): java.lang.String
+    public synthetic static method jvmStatic$reset(): void
+    public final static method setJvmStatic(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    public final method setX(@org.jetbrains.annotations.NotNull p0: java.lang.String): void
+    public synthetic static method x$get(): java.lang.String
+    public synthetic static method x$reset(): void
+}

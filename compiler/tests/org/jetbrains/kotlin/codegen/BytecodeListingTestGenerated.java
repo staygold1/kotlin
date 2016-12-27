@@ -205,6 +205,12 @@ public class BytecodeListingTestGenerated extends AbstractBytecodeListingTest {
             String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/bytecodeListing/properties/delegatedProperties.kt");
             doTest(fileName);
         }
+
+        @TestMetadata("lateinitProperties.kt")
+        public void testLateinitProperties() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/bytecodeListing/properties/lateinitProperties.kt");
+            doTest(fileName);
+        }
     }
 
     @TestMetadata("compiler/testData/codegen/bytecodeListing/specialBridges")

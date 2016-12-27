@@ -58,6 +58,7 @@ import java.util.List;
 
 import static org.jetbrains.kotlin.codegen.AsmUtil.getDeprecatedAccessFlag;
 import static org.jetbrains.kotlin.codegen.AsmUtil.getVisibilityForBackingField;
+import static org.jetbrains.kotlin.codegen.AsmUtil.isStaticMethod;
 import static org.jetbrains.kotlin.codegen.JvmCodegenUtil.isConstOrHasJvmFieldAnnotation;
 import static org.jetbrains.kotlin.codegen.JvmCodegenUtil.isJvmInterface;
 import static org.jetbrains.kotlin.codegen.serialization.JvmSerializationBindings.FIELD_FOR_PROPERTY;
@@ -195,6 +196,65 @@ public class PropertyCodegen {
             iv.areturn(fieldType);
 
             FunctionCodegen.endVisit(iv, "$delegate method for property", DescriptorToSourceUtils.descriptorToDeclaration(descriptor));
+        }
+    }
+
+    private void generateAccessorsForLateinit(
+            @NotNull ClassBuilder builder,
+            @NotNull PropertyDescriptor descriptor,
+            @NotNull String fieldName,
+            @NotNull Type fieldType,
+            int flags
+    ) {
+        int access = (flags | ACC_PUBLIC | ACC_SYNTHETIC) & ~ACC_FINAL;
+
+        PropertyGetterDescriptor getter = descriptor.getGetter();
+        assert getter != null : "No getter for lateinit property: " + descriptor;
+        Method getterMethod = typeMapper.mapSignatureSkipGeneric(getter).getAsmMethod();
+
+        String ownerName = builder.getThisName();
+        String fieldDesc = fieldType.getDescriptor();
+
+        MethodVisitor get = builder.newMethod(
+                JvmDeclarationOriginKt.OtherOrigin(descriptor), access, fieldName + JvmAbi.GET_LATEINIT_NAME_SUFFIX,
+                getterMethod.getDescriptor(), null, null
+        );
+        if (state.getClassBuilderMode().generateBodies) {
+            get.visitCode();
+            InstructionAdapter iv = new InstructionAdapter(get);
+
+            if ((access & ACC_STATIC) == 0) {
+                iv.load(0, Type.getObjectType(ownerName));
+                iv.getfield(ownerName, fieldName, fieldDesc);
+            }
+            else {
+                iv.getstatic(ownerName, fieldName, fieldDesc);
+            }
+
+            iv.areturn(fieldType);
+            FunctionCodegen.endVisit(iv, "$get for lateinit property", DescriptorToSourceUtils.descriptorToDeclaration(descriptor));
+        }
+
+        MethodVisitor reset = builder.newMethod(
+                JvmDeclarationOriginKt.OtherOrigin(descriptor), access, fieldName + JvmAbi.RESET_LATEINIT_NAME_SUFFIX,
+                Type.getMethodDescriptor(Type.VOID_TYPE, getterMethod.getArgumentTypes()), null, null
+        );
+        if (state.getClassBuilderMode().generateBodies) {
+            reset.visitCode();
+            InstructionAdapter iv = new InstructionAdapter(reset);
+
+            if ((access & ACC_STATIC) == 0) {
+                iv.load(0, Type.getObjectType(ownerName));
+                iv.aconst(null);
+                iv.putfield(ownerName, fieldName, fieldDesc);
+            }
+            else {
+                iv.aconst(null);
+                iv.putstatic(ownerName, fieldName, fieldDesc);
+            }
+
+            iv.areturn(Type.VOID_TYPE);
+            FunctionCodegen.endVisit(iv, "$reset for lateinit property", DescriptorToSourceUtils.descriptorToDeclaration(descriptor));
         }
     }
 
@@ -396,6 +456,10 @@ public class PropertyCodegen {
         // TODO: this will not work for deserialized property (the case of incremental compilation of multi-file facade)
         if (isDelegate) {
             generateGetDelegate(builder, propertyDescriptor, name, type, modifiers);
+        }
+        if (propertyDescriptor.isLateInit() &&
+            isAccessorNeeded(element instanceof KtProperty ? (KtProperty) element : null, propertyDescriptor, null)) {
+            generateAccessorsForLateinit(builder, propertyDescriptor, name, type, modifiers);
         }
 
         Annotated fieldAnnotated = new AnnotatedWithFakeAnnotations(propertyDescriptor, annotations);
