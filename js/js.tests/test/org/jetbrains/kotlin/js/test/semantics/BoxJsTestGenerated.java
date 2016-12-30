@@ -3503,6 +3503,12 @@ public class BoxJsTestGenerated extends AbstractBoxJsTest {
             doTest(fileName);
         }
 
+        @TestMetadata("simpleFinalProperty.kt")
+        public void testSimpleFinalProperty() throws Exception {
+            String fileName = KotlinTestUtils.navigationMetadata("js/js.translator/testData/box/inheritance/simpleFinalProperty.kt");
+            doTest(fileName);
+        }
+
         @TestMetadata("valOverride.kt")
         public void testValOverride() throws Exception {
             String fileName = KotlinTestUtils.navigationMetadata("js/js.translator/testData/box/inheritance/valOverride.kt");
