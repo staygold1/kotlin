@@ -93,7 +93,7 @@ class AnnotationConverter(private val converter: Converter) {
                     Annotation(Identifier.withNoPrototype(it.second),
                                listOf(),
                                newLineAfter = false,
-                               target = effectiveAnnotationUseTarget(it.second, target)
+                               target = target
                     ).assignNoPrototype()
                 }
         return Annotations(list).assignNoPrototype()
@@ -118,7 +118,7 @@ class AnnotationConverter(private val converter: Converter) {
 
     fun convertAnnotation(annotation: PsiAnnotation, newLineAfter: Boolean, target: AnnotationUseTarget? = null): Annotation? {
         val (name, arguments) = convertAnnotationValue(annotation) ?: return null
-        return Annotation(name, arguments, newLineAfter, effectiveAnnotationUseTarget(name.name, target)).assignPrototype(annotation)
+        return Annotation(name, arguments, newLineAfter, effectiveAnnotationUseTarget(name.name, target)).assignPrototype(annotation, CommentsAndSpacesInheritance.NO_SPACES)
     }
 
     private fun convertAnnotationValue(annotation: PsiAnnotation): Pair<Identifier, List<Pair<Identifier?, DeferredElement<Expression>>>>? {

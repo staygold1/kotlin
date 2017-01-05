@@ -20,7 +20,7 @@ import org.jetbrains.kotlin.j2k.CodeBuilder
 import org.jetbrains.kotlin.j2k.append
 import org.jetbrains.kotlin.j2k.buildList
 
-enum class AnnotationUseTarget(val t: String) {
+enum class AnnotationUseTarget(val id: String) {
     File("file"), Param("param"), Get("get"), Set("set")
 }
 
@@ -32,7 +32,7 @@ class Annotation(val name: Identifier,
     override fun generateCode(builder: CodeBuilder) {
         builder.append("@")
         target?.let {
-            builder.append("${it.t}:")
+            builder.append("${it.id}:")
         }
         if (arguments.isEmpty()) {
             builder.append(name)
