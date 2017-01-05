@@ -2,13 +2,10 @@
 buildscript {
     ext.kotlin_version = "1.1-SNAPSHOT"
     repositories {
-        flatDir {
-            dirs 'tools/kotlin-gradle-plugin/target',
-                 'tools/kotlin-gradle-plugin/target/dependency'
-        }
+        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap-1.1' }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1-M04"
     }
 }
 
@@ -49,4 +46,7 @@ subprojects {
         classifier = 'javadoc'
         from javadoc.destinationDir
     }
+
+    compileKotlin.compilerJarFile = project.file("${rootDir}/../dist/kotlinc/lib/kotlin-compiler.jar")
+    compileTestKotlin.compilerJarFile = project.file("${rootDir}/../dist/kotlinc/lib/kotlin-compiler.jar")
 }
