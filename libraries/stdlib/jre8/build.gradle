@@ -46,6 +46,8 @@ compileTestJava {
 }
 
 compileKotlin {
+  kotlinOptions.jdkHome = System.getenv('JDK_18')
+  kotlinOptions.jvmTarget = 1.8
   kotlinOptions.freeCompilerArgs = ["-Xallow-kotlin-package",
                                     "-Xmultifile-parts-inherit",
                                     "-Xdump-declarations-to", "${buildDir}/stdlib-declarations.json".toString(),
@@ -53,5 +55,7 @@ compileKotlin {
 }
 
 compileTestKotlin {
+  kotlinOptions.jdkHome = System.getenv('JDK_18')
+  kotlinOptions.jvmTarget = 1.8
   kotlinOptions.freeCompilerArgs = ["-Xallow-kotlin-package"]
 }
