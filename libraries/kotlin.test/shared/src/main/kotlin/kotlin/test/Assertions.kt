@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-@file:kotlin.jvm.JvmMultifileClass
-@file:kotlin.jvm.JvmName("AssertionsKt")
-
 /**
  * A number of helper methods for writing unit tests.
  */
 package kotlin.test
 
 import kotlin.internal.*
+
+header val asserter: Asserter
 
 /** Asserts that the given [block] returns `true`. */
 fun assertTrue(message: String? = null, block: () -> Boolean): Unit = assertTrue(block(), message)
