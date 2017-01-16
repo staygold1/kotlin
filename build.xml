@@ -1073,6 +1073,7 @@
             <arg value="-d"/>
             <arg value="${output}/classes/kotlin-test"/>
             <arg value="-version"/>
+            <arg value="-no-stdlib"/>
             <arg value="-classpath"/>
             <arg value="${output}/classes/builtins:libraries/lib/junit-4.11.jar:${output}/builtins"/>
             <arg value="-module-name"/>
@@ -1082,10 +1083,38 @@
             <arg value="libraries/kotlin.test/shared/src/main/kotlin"/>
             <arg value="libraries/kotlin.test/jvm/src/main/kotlin"/>
         </java>
+        <java classname="org.jetbrains.kotlin.preloading.Preloader" failonerror="true" fork="true" maxmemory="${max.heap.size.for.forked.jvm}">
+            <classpath>
+                <pathelement location="${kotlin-home}/lib/kotlin-preloader.jar"/>
+            </classpath>
+            <assertions>
+                <enable/>
+            </assertions>
+            <arg value="-cp"/>
+            <arg value="${kotlin-home}/lib/kotlin-compiler.jar"/>
+            <arg value="org.jetbrains.kotlin.cli.js.K2JSCompiler"/>
+            <arg value="-output"/>
+            <arg value="${output}/classes/kotlin-test-js/kotlin-test.js"/>
+            <arg value="-version"/>
+            <arg value="-meta-info"/>
+<!--             <arg value="-kjsm"/> -->
+            <arg line="-main noCall"/>
+            <arg line="-module-kind commonjs"/>    
+            <arg value="-Xallow-kotlin-package"/>
+            <arg value="-Xmulti-platform"/>
+            <arg value="libraries/kotlin.test/shared/src/main/kotlin"/>
+            <arg value="libraries/kotlin.test/js/src/main/kotlin"/>
+        </java>
 
         <pack-runtime-jar jar-name="kotlin-test.jar" implementation-title="${manifest.impl.title.kotlin.test}" runtime-component="Test">
             <jar-content>
                 <fileset dir="${output}/classes/kotlin-test" includes="**/*" excludes="kotlin/internal/OnlyInputTypes*,kotlin/internal/InlineOnly*,kotlin/internal"/>
+            </jar-content>
+        </pack-runtime-jar>
+        
+        <pack-runtime-jar jar-name="kotlin-test-js.jar" implementation-title="${manifest.impl.title.kotlin.test}" runtime-component="TestJs">
+            <jar-content>
+                <fileset dir="${output}/classes/kotlin-test-js" includes="**/*" excludes="kotlin/internal/OnlyInputTypes*,kotlin/internal/InlineOnly*,kotlin/internal"/>
             </jar-content>
         </pack-runtime-jar>
     </target>
