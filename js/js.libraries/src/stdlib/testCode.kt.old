@@ -38,7 +38,7 @@ inline fun <reified T : Throwable> assertFailsWith(message: String? = null, noin
 /**
  * Provides the JS implementation of asserter using [QUnit](http://QUnitjs.com/)
  */
-public var asserter: Asserter = QUnitAsserter()
+public impl var asserter: Asserter = QUnitAsserter()
 
 public class QUnitAsserter() : Asserter {
 
