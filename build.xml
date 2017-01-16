@@ -981,7 +981,7 @@
                     <pathelement location="${kotlin-home}/lib/kotlin-preloader.jar"/>
                 </classpath>
                 <assertions>
-                    <enable/>R
+                    <enable/>
                 </assertions>
                 <arg value="-cp"/>
                 <arg value="${kotlin-home}/lib/kotlin-compiler.jar"/>
@@ -1078,6 +1078,7 @@
             <arg value="-module-name"/>
             <arg value="kotlin-test"/>
             <arg value="-Xallow-kotlin-package"/>
+            <arg value="-Xmulti-platform"/>
             <arg value="libraries/kotlin.test/shared/src/main/kotlin"/>
             <arg value="libraries/kotlin.test/jvm/src/main/kotlin"/>
         </java>
