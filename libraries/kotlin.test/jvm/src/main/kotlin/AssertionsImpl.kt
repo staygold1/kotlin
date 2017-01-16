@@ -32,11 +32,11 @@ private fun <T : Throwable> assertFailsWithImpl(exceptionClass: Class<T>, messag
         }
 
         @Suppress("INVISIBLE_MEMBER")
-        asserter.fail((message?.let { "$it. " } ?: "") + "Expected an exception of type $exceptionClass to be thrown, but was $e")
+        asserter.fail(messagePrefix(message) + "Expected an exception of type $exceptionClass to be thrown, but was $e")
     }
 
     @Suppress("INVISIBLE_MEMBER")
-    val msg = message?.let { "$it. " } ?: ""
+    val msg = messagePrefix(message)
     asserter.fail(msg + "Expected an exception of type $exceptionClass to be thrown, but was completed successfully.")
 }
 

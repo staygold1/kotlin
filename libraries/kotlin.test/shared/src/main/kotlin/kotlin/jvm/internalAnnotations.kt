@@ -2,8 +2,8 @@ package kotlin.jvm
 
 @Suppress("HEADER_WITHOUT_IMPLEMENTATION")
 @Target(AnnotationTarget.FILE)
-header annotation class JvmMultifileClass
+internal header annotation class JvmMultifileClass
 
 @Suppress("HEADER_WITHOUT_IMPLEMENTATION")
 @Target(AnnotationTarget.FILE)
-header annotation class JvmName(val name: String)
+internal header annotation class JvmName(val name: String)
