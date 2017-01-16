@@ -1,0 +1,7 @@
+package
+
+public fun f1(): kotlin.reflect.KClass<TString /* = kotlin.String */>
+public fun f2(): kotlin.reflect.KClass<TNullableString /* = kotlin.String? */>
+public inline fun </*0*/ reified T> f4(): kotlin.Any
+public typealias TNullableString = kotlin.String?
+public typealias TString = kotlin.String
