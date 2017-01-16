@@ -8,13 +8,7 @@ private val inited = AtomicBoolean()
 private val lock = ReentrantLock()
 private val contributors = ArrayList<AsserterContributor>()
 
-/**
- * The active implementation of [Asserter]. An implementation of [Asserter] can be provided
- * using the [Java service loader](http://docs.oracle.com/javase/7/docs/api/java/util/ServiceLoader.html) mechanism.
- */
-impl val asserter: Asserter
-    get() = lookup()
-
+internal impl fun lookupAsserter(): Asserter = lookup()
 
 internal fun lookup(): Asserter {
     initContributorsIfNeeded()
