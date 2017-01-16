@@ -981,7 +981,7 @@
                     <pathelement location="${kotlin-home}/lib/kotlin-preloader.jar"/>
                 </classpath>
                 <assertions>
-                    <enable/>
+                    <enable/>R
                 </assertions>
                 <arg value="-cp"/>
                 <arg value="${kotlin-home}/lib/kotlin-compiler.jar"/>
@@ -1060,18 +1060,27 @@
     </target>
 
     <target name="kotlin-test">
-        <new-kotlinc output="${output}/classes/kotlin-test" moduleName="kotlin-test">
-            <src>
-                <include name="libraries/kotlin.test/shared/src/main/kotlin" />
-                <include name="libraries/kotlin.test/shared/src/main/kotlin.jvm" />
-                <include name="libraries/kotlin.test/junit/src/main/kotlin" />
-            </src>
-            <class-path>
-                <pathelement path="${output}/classes/builtins"/>
-                <pathelement path="libraries/lib/junit-4.11.jar"/>
-                <pathelement path="${output}/builtins"/>
-            </class-path>
-        </new-kotlinc>
+        <java classname="org.jetbrains.kotlin.preloading.Preloader" failonerror="true" fork="true" maxmemory="${max.heap.size.for.forked.jvm}">
+            <classpath>
+                <pathelement location="${kotlin-home}/lib/kotlin-preloader.jar"/>
+            </classpath>
+            <assertions>
+                <enable/>
+            </assertions>
+            <arg value="-cp"/>
+            <arg value="${kotlin-home}/lib/kotlin-compiler.jar"/>
+            <arg value="org.jetbrains.kotlin.cli.jvm.K2JVMCompiler"/>
+            <arg value="-d"/>
+            <arg value="${output}/classes/kotlin-test"/>
+            <arg value="-version"/>
+            <arg value="-classpath"/>
+            <arg value="${output}/classes/builtins:libraries/lib/junit-4.11.jar:${output}/builtins"/>
+            <arg value="-module-name"/>
+            <arg value="kotlin-test"/>
+            <arg value="-Xallow-kotlin-package"/>
+            <arg value="libraries/kotlin.test/shared/src/main/kotlin"/>
+            <arg value="libraries/kotlin.test/jvm/src/main/kotlin"/>
+        </java>
 
         <pack-runtime-jar jar-name="kotlin-test.jar" implementation-title="${manifest.impl.title.kotlin.test}" runtime-component="Test">
             <jar-content>
