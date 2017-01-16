@@ -1,7 +1,7 @@
 package kotlin.test
 
 fun init() {
-    asserter = JsTestsAsserter()
+    _asserter = JsTestsAsserter()
 }
 
 public class JsTestsAsserter() : Asserter {
