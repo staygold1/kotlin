@@ -2202,6 +2202,42 @@ public class DiagnosticsTestGenerated extends AbstractDiagnosticsTest {
                     KotlinTestUtils.assertAllTestsPresentByMetadata(this.getClass(), new File("compiler/testData/diagnostics/tests/callableReference/generic"), Pattern.compile("^(.+)\\.kt$"), TargetBackend.ANY, true);
                 }
 
+                @TestMetadata("argumentAndReturnExpectedType.kt")
+                public void testArgumentAndReturnExpectedType() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/argumentAndReturnExpectedType.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("argumentExpectedType.kt")
+                public void testArgumentExpectedType() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/argumentExpectedType.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("dependOnArgumentType.kt")
+                public void testDependOnArgumentType() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/dependOnArgumentType.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("expectedFunctionType.kt")
+                public void testExpectedFunctionType() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/expectedFunctionType.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("explicitTypeArguments.kt")
+                public void testExplicitTypeArguments() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/explicitTypeArguments.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("genericExtensionFunction.kt")
+                public void testGenericExtensionFunction() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/genericExtensionFunction.kt");
+                    doTest(fileName);
+                }
+
                 @TestMetadata("kt10968.kt")
                 public void testKt10968() throws Exception {
                     String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/kt10968.kt");
@@ -2217,6 +2253,18 @@ public class DiagnosticsTestGenerated extends AbstractDiagnosticsTest {
                 @TestMetadata("kt12286.kt")
                 public void testKt12286() throws Exception {
                     String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/kt12286.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("kt7470.kt")
+                public void testKt7470() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/kt7470.kt");
+                    doTest(fileName);
+                }
+
+                @TestMetadata("resolutionWithGenericCallable.kt")
+                public void testResolutionWithGenericCallable() throws Exception {
+                    String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/diagnostics/tests/callableReference/generic/resolutionWithGenericCallable.kt");
                     doTest(fileName);
                 }
             }

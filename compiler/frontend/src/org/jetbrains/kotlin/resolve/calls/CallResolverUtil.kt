@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 JetBrains s.r.o.
+ * Copyright 2010-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,8 +69,6 @@ fun replaceReturnTypeForCallable(type: KotlinType, given: KotlinType): KotlinTyp
     newArguments.add(TypeProjectionImpl(Variance.INVARIANT, given))
     return replaceTypeArguments(type, newArguments)
 }
-
-fun replaceReturnTypeByUnknown(type: KotlinType) = replaceReturnTypeForCallable(type, DONT_CARE)
 
 private fun replaceTypeArguments(type: KotlinType, newArguments: List<TypeProjection>) =
         KotlinTypeFactory.simpleType(type.annotations, type.constructor, newArguments, type.isMarkedNullable, type.memberScope)

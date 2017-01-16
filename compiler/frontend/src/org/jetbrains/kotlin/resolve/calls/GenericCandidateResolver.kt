@@ -409,9 +409,8 @@ class GenericCandidateResolver(
             valueArgument: ValueArgument
     ): KotlinType? {
         val dataFlowInfoForArgument = context.candidateCall.dataFlowInfoForArguments.getInfo(valueArgument)
-        val expectedTypeWithoutReturnType = if (!hasUnknownReturnType(expectedType)) replaceReturnTypeByUnknown(expectedType) else expectedType
         val newContext = context
-                .replaceExpectedType(expectedTypeWithoutReturnType)
+                .replaceExpectedType(expectedType)
                 .replaceDataFlowInfo(dataFlowInfoForArgument)
                 .replaceContextDependency(INDEPENDENT)
         return argumentTypeResolver.getCallableReferenceTypeInfo(
