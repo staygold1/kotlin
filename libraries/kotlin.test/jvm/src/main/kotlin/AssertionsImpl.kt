@@ -30,8 +30,12 @@ private fun <T : Throwable> assertFailsWithImpl(exceptionClass: Class<T>, messag
             @Suppress("UNCHECKED_CAST")
             return e as T
         }
+
+        @Suppress("INVISIBLE_MEMBER")
         asserter.fail((message?.let { "$it. " } ?: "") + "Expected an exception of type $exceptionClass to be thrown, but was $e")
     }
+
+    @Suppress("INVISIBLE_MEMBER")
     val msg = message?.let { "$it. " } ?: ""
     asserter.fail(msg + "Expected an exception of type $exceptionClass to be thrown, but was completed successfully.")
 }
@@ -67,12 +71,3 @@ inline fun todo(@Suppress("UNUSED_PARAMETER") block: () -> Unit) {
 @InlineOnly
 inline fun currentStackTrace() = (java.lang.Exception() as java.lang.Throwable).stackTrace
 
-/**
- * The active implementation of [Asserter]. An implementation of [Asserter] can be provided
- * using the [Java service loader](http://docs.oracle.com/javase/7/docs/api/java/util/ServiceLoader.html) mechanism.
- */
-impl val asserter: Asserter
-    get() = lookup()
-
-
-private fun <T, R> T.let(block: (T) -> R): R = block(this)

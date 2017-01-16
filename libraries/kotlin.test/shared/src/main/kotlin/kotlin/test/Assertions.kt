@@ -17,6 +17,9 @@
 /**
  * A number of helper methods for writing unit tests.
  */
+@file:kotlin.jvm.JvmMultifileClass
+@file:kotlin.jvm.JvmName("AssertionsKt")
+
 package kotlin.test
 
 import kotlin.internal.*
