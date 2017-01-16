@@ -1097,10 +1097,9 @@
             <arg value="${output}/classes/kotlin-test-js/kotlin-test.js"/>
             <arg value="-version"/>
             <arg value="-meta-info"/>
-<!--             <arg value="-kjsm"/> -->
+            <arg value="-kjsm"/>
             <arg line="-main noCall"/>
-            <arg line="-module-kind commonjs"/>    
-            <arg value="-Xallow-kotlin-package"/>
+            <arg line="-module-kind umd"/>
             <arg value="-Xmulti-platform"/>
             <arg value="libraries/kotlin.test/shared/src/main/kotlin"/>
             <arg value="libraries/kotlin.test/js/src/main/kotlin"/>
