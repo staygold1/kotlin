@@ -65,6 +65,32 @@
                     <!--</execution>-->
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <forceCreation>true</forceCreation>
+                    <classesDirectory>${project.build.directory}/js</classesDirectory>
+                    <includes>
+                        <include>**/*.js</include>
+                        <include>**/*.js.map</include>
+                        <include>**/*.kjsm</include>
+                        <include>**/*.kotlin_classes</include>
+                        <include>**/*.kotlin_string_table</include>
+                        <include>**/*.kotlin_file_table</include>
+                    </includes>
+                    <archive>
+                        <forced />
+                        <manifestEntries>
+                            <Built-By>${user.name}</Built-By>
+
+                            <Implementation-Vendor>JetBrains s.r.o.</Implementation-Vendor>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
