@@ -17,6 +17,7 @@
 package org.jetbrains.kotlin.resolve.jvm.diagnostics;
 
 import com.intellij.psi.PsiElement;
+import org.jetbrains.kotlin.descriptors.DeclarationDescriptor;
 import org.jetbrains.kotlin.diagnostics.DiagnosticFactory0;
 import org.jetbrains.kotlin.diagnostics.DiagnosticFactory1;
 import org.jetbrains.kotlin.diagnostics.DiagnosticFactory2;
@@ -88,6 +89,8 @@ public interface ErrorsJvm {
     DiagnosticFactory1<PsiElement, String> SUPER_CALL_WITH_DEFAULT_PARAMETERS = DiagnosticFactory1.create(ERROR);
 
     DiagnosticFactory0<KtExpression> WHEN_ENUM_CAN_BE_NULL_IN_JAVA = DiagnosticFactory0.create(WARNING);
+
+    DiagnosticFactory1<PsiElement, DeclarationDescriptor> DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET = DiagnosticFactory1.create(WARNING);
 
     @SuppressWarnings("UnusedDeclaration")
     Object _initializer = new Object() {
