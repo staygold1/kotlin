@@ -18,8 +18,7 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <!--suppress KotlinTestJUnit -->
-            <artifactId>kotlin-test</artifactId>
+            <artifactId>kotlin-test-common</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

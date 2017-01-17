@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>kotlin-test</artifactId>
+    <artifactId>kotlin-test-common</artifactId>
 
     <dependencies>
         <!--<dependency>-->

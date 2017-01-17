@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>kotlin-test-jvm</artifactId>
+    <artifactId>kotlin-test</artifactId>
 
     <dependencies>
         <dependency>
@@ -18,8 +18,7 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <!--suppress KotlinTestJUnit -->
-            <artifactId>kotlin-test</artifactId>
+            <artifactId>kotlin-test-common</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
