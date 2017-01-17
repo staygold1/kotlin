@@ -16,10 +16,10 @@
 
 package org.jetbrains.kotlin.jps.model
 
-import org.jetbrains.jps.plugin.JpsPluginManager
+//import org.jetbrains.jps.plugin.JpsPluginManager
 
-class KotlinJpsPluginManager : JpsPluginManager() {
-    override fun <T : Any?> loadExtensions(extensionClass: Class<T>): MutableCollection<T> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-}
+//class KotlinJpsPluginManager : JpsPluginManager() {
+//    override fun <T : Any?> loadExtensions(extensionClass: Class<T>): MutableCollection<T> {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
+//}
