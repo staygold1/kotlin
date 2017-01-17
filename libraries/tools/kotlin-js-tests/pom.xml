@@ -114,6 +114,13 @@
                                     <outputDirectory>${project.build.directory}/js/lib</outputDirectory>
                                     <includes>*.js</includes>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.jetbrains.kotlin</groupId>
+                                    <artifactId>kotlin-test-js</artifactId>
+                                    <version>${project.version}</version>
+                                    <outputDirectory>${project.build.directory}/js/lib</outputDirectory>
+                                    <includes>*.js</includes>
+                                </artifactItem>
                             </artifactItems>
                         </configuration>
                     </execution>
