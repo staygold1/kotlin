@@ -112,6 +112,8 @@ public class DefaultErrorMessagesJvm implements DefaultErrorMessages.Extension {
                 "Method implementation inheritance is restricted for such cases. " +
                 "Please make explicit overrides (abstract or concrete) for the following non-abstract members of ''{1}'': {2}",
                 Renderers.NAME, Renderers.NAME, Renderers.TO_STRING);
+
+        MAP.put(ErrorsJvm.DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET, "Super and static calls to java default methods are deprecated in jvm 1.6 target: ''{0}''. Recompile with '-jvm-target 1.8'", Renderers.TO_STRING);
     }
 
     @NotNull
