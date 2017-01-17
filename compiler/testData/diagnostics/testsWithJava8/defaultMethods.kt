@@ -19,7 +19,7 @@ import JavaInterface.testStatic
 
 interface KotlinInterface : JavaInterface {
     fun fooo() {
-        <!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
+        <!INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
         super.<!INTERFACE_CANT_CALL_DEFAULT_METHOD_VIA_SUPER!>test<!>()
     }
 
@@ -30,14 +30,14 @@ interface KotlinInterface : JavaInterface {
 
 interface KotlinInterfaceInderectInheritance : KotlinInterface {
     fun foooo() {
-        <!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
+        <!INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
         super.<!INTERFACE_CANT_CALL_DEFAULT_METHOD_VIA_SUPER!>test<!>()
     }
 }
 
 open class KotlinClass : JavaInterface {
     fun foo(){
-        <!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
+        <!INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
         super.<!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>test<!>()
         super.<!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>testOverride<!>()
     }
@@ -45,7 +45,7 @@ open class KotlinClass : JavaInterface {
 
 class KotlinClassInderectInheritance : KotlinClass() {
     fun foo2(){
-        <!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
+        <!INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
         super.test()
         super.testOverride()
     }
@@ -53,14 +53,14 @@ class KotlinClassInderectInheritance : KotlinClass() {
 
 class KotlinClassInderectInheritance2 : KotlinInterfaceInderectInheritance {
     fun foo(){
-        <!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
+        <!INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
         super.<!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>test<!>()
         super.testOverride()
     }
 }
 
 fun test() {
-    JavaInterface.<!DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
+    JavaInterface.<!INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET!>testStatic<!>()
     KotlinClass().foo()
     KotlinClassInderectInheritance2().foo()
 

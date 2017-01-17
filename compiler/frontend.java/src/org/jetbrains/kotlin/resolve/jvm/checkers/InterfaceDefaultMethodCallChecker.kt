@@ -42,7 +42,7 @@ class InterfaceDefaultMethodCallChecker : CallChecker {
             isStaticDeclaration(descriptor) &&
             isInterface(descriptor.containingDeclaration) &&
             descriptor is JavaCallableMemberDescriptor) {
-            context.trace.report(ErrorsJvm.DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET.on(reportOn, descriptor))
+            context.trace.report(ErrorsJvm.INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET.on(reportOn, descriptor))
         }
 
         if (getSuperCallExpression(resolvedCall.call) == null) return
