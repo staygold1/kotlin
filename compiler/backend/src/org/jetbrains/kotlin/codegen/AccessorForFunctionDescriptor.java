@@ -16,8 +16,10 @@
 
 package org.jetbrains.kotlin.codegen;
 
+import com.sun.tools.jdi.LinkedHashMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.kotlin.codegen.coroutines.CoroutineCodegenUtilKt;
 import org.jetbrains.kotlin.descriptors.*;
 import org.jetbrains.kotlin.name.Name;
 import org.jetbrains.kotlin.resolve.DescriptorUtils;
@@ -46,6 +48,15 @@ public class AccessorForFunctionDescriptor extends AbstractAccessorForFunctionDe
                    descriptor.getReturnType(),
                    Modality.FINAL,
                    Visibilities.LOCAL);
+
+        setSuspend(descriptor.isSuspend());
+        if (descriptor.getUserData(CoroutineCodegenUtilKt.INITIAL_DESCRIPTOR_FOR_SUSPEND_FUNCTION) != null) {
+            userDataMap = new java.util.LinkedHashMap<UserDataKey<?>, Object>();
+            userDataMap.put(
+                    CoroutineCodegenUtilKt.INITIAL_DESCRIPTOR_FOR_SUSPEND_FUNCTION,
+                    descriptor.getUserData(CoroutineCodegenUtilKt.INITIAL_DESCRIPTOR_FOR_SUSPEND_FUNCTION)
+            );
+        }
     }
 
     @NotNull
