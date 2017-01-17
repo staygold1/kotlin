@@ -319,7 +319,8 @@ abstract class AbstractDiagnosticsTest : BaseDiagnosticsTest() {
                 LookupTracker.DO_NOTHING,
                 JvmPackagePartProvider(environment, moduleContentScope),
                 languageVersionSettings,
-                moduleClassResolver
+                moduleClassResolver,
+                environment.configuration.apply { isReadOnly = true }
         )
         container.initJvmBuiltInsForTopDownAnalysis(moduleDescriptor, languageVersionSettings)
         moduleClassResolver.resolver = container.get<JavaDescriptorResolver>()
