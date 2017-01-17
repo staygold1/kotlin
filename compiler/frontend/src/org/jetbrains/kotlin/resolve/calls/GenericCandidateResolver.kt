@@ -395,7 +395,7 @@ class GenericCandidateResolver(
         if (substitutedType != null && !TypeUtils.isDontCarePlaceholder(substitutedType))
             return substitutedType
 
-        val shapeType = argumentTypeResolver.getShapeTypeOfCallableReference(callableReference, context, false)
+        val shapeType = argumentTypeResolver.getShapeTypeOfCallableReference(callableReference, context, true)
         if (shapeType != null && shapeType.isFunctionTypeOrSubtype && !hasUnknownFunctionParameter(shapeType))
             return shapeType
 
