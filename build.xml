@@ -487,7 +487,7 @@
         </jar>
     </target>
 
-    <target name="kotlin-js-stdlib" depends="js-stdlib,pack-js-stdlib-sources"/>
+    <target name="kotlin-js-stdlib" depends="js-stdlib,js-kotlin-test,pack-js-stdlib-sources"/>
 
     <target name="preloader">
         <cleandir dir="${output}/classes/preloader"/>
@@ -1083,6 +1083,15 @@
             <arg value="libraries/kotlin.test/shared/src/main/kotlin"/>
             <arg value="libraries/kotlin.test/jvm/src/main/kotlin"/>
         </java>
+
+        <pack-runtime-jar jar-name="kotlin-test.jar" implementation-title="${manifest.impl.title.kotlin.test}" runtime-component="Test">
+            <jar-content>
+                <fileset dir="${output}/classes/kotlin-test" includes="**/*" excludes="kotlin/internal/OnlyInputTypes*,kotlin/internal/InlineOnly*,kotlin/internal"/>
+            </jar-content>
+        </pack-runtime-jar>
+    </target>
+    
+    <target name="js-kotlin-test">
         <java classname="org.jetbrains.kotlin.preloading.Preloader" failonerror="true" fork="true" maxmemory="${max.heap.size.for.forked.jvm}">
             <classpath>
                 <pathelement location="${kotlin-home}/lib/kotlin-preloader.jar"/>
@@ -1104,13 +1113,6 @@
             <arg value="libraries/kotlin.test/shared/src/main/kotlin"/>
             <arg value="libraries/kotlin.test/js/src/main/kotlin"/>
         </java>
-
-        <pack-runtime-jar jar-name="kotlin-test.jar" implementation-title="${manifest.impl.title.kotlin.test}" runtime-component="Test">
-            <jar-content>
-                <fileset dir="${output}/classes/kotlin-test" includes="**/*" excludes="kotlin/internal/OnlyInputTypes*,kotlin/internal/InlineOnly*,kotlin/internal"/>
-            </jar-content>
-        </pack-runtime-jar>
-        
         <pack-runtime-jar jar-name="kotlin-test-js.jar" implementation-title="${manifest.impl.title.kotlin.test}" runtime-component="TestJs">
             <jar-content>
                 <fileset dir="${output}/classes/kotlin-test-js" includes="**/*" excludes="kotlin/internal/OnlyInputTypes*,kotlin/internal/InlineOnly*,kotlin/internal"/>
