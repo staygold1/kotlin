@@ -9,8 +9,9 @@ package kotlin.collections
 @SinceKotlin("1.1")
 @Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
 @kotlin.internal.InlineOnly
-public inline fun <@kotlin.internal.OnlyInputTypes K, V> Map<out K, V>.getOrDefault(key: K, defaultValue: V): V
-        = (this as Map<K, V>).getOrDefault(key, defaultValue)
+// TODO: Use Map<out K, @Exact V>, when supported by inference: KT-15610
+public inline fun <@kotlin.internal.OnlyInputTypes K, V, V1 : V?> Map<out K, V>.getOrDefault(key: K, defaultValue: V1): V1
+        = (this as Map<K, V1>).getOrDefault(key, defaultValue)
 
 
 /**
