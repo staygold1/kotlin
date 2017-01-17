@@ -15,9 +15,9 @@
  */
 
 @file:Suppress("DEPRECATION")
+package kotlin.test
 
 import java.util.*
-import kotlin.test.*
 
 @Deprecated("This is an experimental part of the API. It may be changed or removed in newer releases.")
 class CollectionAssertionSession<E, C: Iterable<E>>(val collection: C)
