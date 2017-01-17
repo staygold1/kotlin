@@ -91,6 +91,7 @@ public interface ErrorsJvm {
     DiagnosticFactory0<KtExpression> WHEN_ENUM_CAN_BE_NULL_IN_JAVA = DiagnosticFactory0.create(WARNING);
 
     DiagnosticFactory1<PsiElement, DeclarationDescriptor> DEFAULT_METHOD_CALL_FROM_JAVA6_TARGET = DiagnosticFactory1.create(WARNING);
+    DiagnosticFactory1<PsiElement, DeclarationDescriptor> INTERFACE_STATIC_METHOD_CALL_FROM_JAVA6_TARGET = DiagnosticFactory1.create(WARNING);
 
     @SuppressWarnings("UnusedDeclaration")
     Object _initializer = new Object() {
