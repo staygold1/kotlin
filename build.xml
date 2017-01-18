@@ -1060,6 +1060,11 @@
     </target>
 
     <target name="kotlin-test">
+        <path id="kotlin-test-compile-classpath">
+            <pathelement location="${output}/classes/builtins"/>
+            <pathelement location="${output}/builtins"/>
+        </path>
+
         <java classname="org.jetbrains.kotlin.preloading.Preloader" failonerror="true" fork="true" maxmemory="${max.heap.size.for.forked.jvm}">
             <classpath>
                 <pathelement location="${kotlin-home}/lib/kotlin-preloader.jar"/>
@@ -1075,7 +1080,7 @@
             <arg value="-version"/>
             <arg value="-no-stdlib"/>
             <arg value="-classpath"/>
-            <arg value="${output}/classes/builtins:libraries/lib/junit-4.11.jar:${output}/builtins"/>
+            <arg value="${toString:kotlin-test-compile-classpath}"/>
             <arg value="-module-name"/>
             <arg value="kotlin-test"/>
             <arg value="-Xallow-kotlin-package"/>
