@@ -64,7 +64,7 @@ android {
 
     dexOptions {
         dexInProcess false
-        javaMaxHeapSize "600m"
+        javaMaxHeapSize "1024m"
     }
 }
 
